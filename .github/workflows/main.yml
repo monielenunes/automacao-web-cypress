@@ -1,0 +1,25 @@
+name: Testes Regressivos
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  run-tests:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Cypress info
+        run: npx cypress info
+        
+      - name: Node info
+        run: node -v
+        
+      - name: "Testes de Regressão - Chrome"
+        uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
